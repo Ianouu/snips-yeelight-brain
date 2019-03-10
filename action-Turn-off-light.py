@@ -38,13 +38,13 @@ def action_wrapper(hermes, intentMessage, conf):
     addr_ = conf['global']['ip']
     port_ =conf['global']['port']
 
-    
-        
+    user_ = conf['secret']['user']
+    pass_ = conf['secret']['api-password']
     
     try:           
         request = "turn/off/all"
 		url = "http://" + addr_ + ":" + port_ + "/" + request		
-		response = requests.get(url)
+		response = requests.get(url, auth=HTTPBasicAuth(user_, pass_))
 		
         hermes.publish_end_session(intentMessage.session_id, "")
     except requests.exceptions.RequestException:
