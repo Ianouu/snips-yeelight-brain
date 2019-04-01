@@ -8,6 +8,7 @@ import io
 
 import simplejson
 import requests
+from requests.auth import HTTPBasicAuth
 
 CONFIGURATION_ENCODING_FORMAT = "utf-8"
 CONFIG_INI = "config.ini"
